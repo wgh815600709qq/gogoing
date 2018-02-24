@@ -1,0 +1,12 @@
+.re-input{
+  width: 100px;
+}
+
+.re-input input{
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border: 1px solid red;
+  border-radius: 5px;
+  text-indent: 10px;
+}
