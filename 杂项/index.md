@@ -10,6 +10,14 @@
 
 ```
 
+# 解析React发展历史与优化文章
+```
+ Diff算法、JSX、DOM更新（版本控制)等
+
+[http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651227848&idx=1&sn=536dcf60dd2d9df86d4092bd4c2cef9e&chksm=bd495f4c8a3ed65af05a1624ea14de8712afa3c22298965744e27871d5b6665f57c5a6b3dcf2&mpshare=1&scene=23&srcid=0227GgxfKZvSFM39mIvEsqRf#rd]
+
+```
+
 
 # 面向对象
 
@@ -63,3 +71,4 @@ Children.prototype = new Person() // 2、继承方法
 Children.prototype.constructor = Children // 3、改指向
 
 ```
+
