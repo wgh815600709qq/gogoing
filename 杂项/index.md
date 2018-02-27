@@ -63,3 +63,6 @@ Children.prototype = new Person() // 2、继承方法
 Children.prototype.constructor = Children // 3、改指向
 
 ```
+
+
+# 匿名函数 【http://www.jb51.net/article/57406.htm】
