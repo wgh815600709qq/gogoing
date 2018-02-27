@@ -10,6 +10,15 @@
 
 ```
 
+# 解析React发展历史与优化文章
+[链接](http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=2651227848&idx=1&sn=536dcf60dd2d9df86d4092bd4c2cef9e&chksm=bd495f4c8a3ed65af05a1624ea14de8712afa3c22298965744e27871d5b6665f57c5a6b3dcf2&mpshare=1&scene=23&srcid=0227GgxfKZvSFM39mIvEsqRf#rd)
+```
+ Diff算法、JSX、DOM更新（版本控制)等
+```
+
+
+
+
 
 # 面向对象
 
@@ -64,5 +73,51 @@ Children.prototype.constructor = Children // 3、改指向
 
 ```
 
+# 闭包
+```
+1、概念: 有权访问另一个函数作用域中的变量的函数
+2、常见方式： A函数内部嵌套B函数,B函数包含A函数作用域的变量
+3、核心理解：作用域链，明确当闭包函数执行时候，该作用域下的变量的最终值究竟是什么
+example1:易错
 
-# 匿名函数 【http://www.jb51.net/article/57406.htm】
+function A() {
+    var arr = []
+    for(var i=0; i<10; i++) {
+        arr[i] = function () {
+            return i
+        }
+    }
+    return arr
+}
+
+explain：
+此函数返回的是函数数组，当函数真正执行时候，对应的作用域链的i值为循环完毕后的值
+
+example2:利用闭包
+
+version1:易懂
+
+function counter () {
+    var count = 0
+    return function () {
+        return ++count
+    }
+}
+var a = counter()
+/*
+    ƒ () {
+            return ++count
+        }
+*/
+
+a()
+a()
+
+version2:
+var counter =(function(){
+    var count = 0
+    return function () {
+        return ++count
+    }
+})()
+```
