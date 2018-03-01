@@ -25,13 +25,18 @@ export default class DataBus {
     this.eatApple = false
     this.gameOver   = false
   }
-
+  isSameObject(a, b) {
+    return JSON.stringify(a) === JSON.stringify(b)
+  }
   /**
    * 回收食物，进入对象池
    * 此后不进入帧循环
    */
   removeFood(food) {
-    let temp = this.foods.shift()
+    var index = this.foods.findIndex((item) => {
+      return this.isSameObject(item, food)
+    })
+    let temp = this.foods.splice(index, 1)[0]
 
     temp.visible = false
 

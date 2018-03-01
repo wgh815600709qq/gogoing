@@ -10,7 +10,7 @@
 	"compileType": "game",
 	"libVersion": "game",
 	"appid": "touristappid",
-	"projectname": "Greedy%20Snaker",
+	"projectname": "Greedy%20Snake",
 	"isGameTourist": true,
 	"condition": {
 		"search": {

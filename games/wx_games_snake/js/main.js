@@ -14,6 +14,7 @@ let databus = new DataBus()
 export default class Main {
   constructor() {
     this.restart()
+    this.time = null
   }
 
   restart() {
@@ -40,9 +41,14 @@ export default class Main {
    * 帧数取模定义成生成的频率
    */
   foodGenerate() {
+    if (this.time && (new Date() - this.time) < 1000) {
+      console.log('yes')
+      return
+    }
     let food = databus.pool.getItemByClass('food', Food)
-    food.init(6)
+    food.init()
     databus.foods.push(food)
+    this.time = new Date()
   }
 
   // 全局碰撞检测
@@ -125,12 +131,19 @@ export default class Main {
 
       return
     }
+    if (databus.foods.length > 100) {
+      this.gameinfo.renderGameOver(ctx, databus.score)
 
+      this.touchHandler = this.touchEventHandler.bind(this)
+      canvas.addEventListener('touchstart', this.touchHandler)
+
+      return
+    }
     if (databus.eatApple) {
       ++databus.score
+      databus.eatApple = false
       this.gameinfo.renderGameScore(ctx, databus.score)
     }
-
     window.requestAnimationFrame(
       this.loop.bind(this),
       canvas
