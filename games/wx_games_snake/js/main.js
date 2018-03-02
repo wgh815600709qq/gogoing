@@ -42,7 +42,6 @@ export default class Main {
    */
   foodGenerate() {
     if (this.time && (new Date() - this.time) < 1000) {
-      console.log('yes')
       return
     }
     let food = databus.pool.getItemByClass('food', Food)
@@ -125,13 +124,15 @@ export default class Main {
     // 游戏结束停止帧循环
     if ( databus.gameOver ) {
       this.gameinfo.renderGameOver(ctx, databus.score)
-
+      this.music.stopBgm()
       this.touchHandler = this.touchEventHandler.bind(this)
       canvas.addEventListener('touchstart', this.touchHandler)
 
       return
     }
-    if (databus.foods.length > 100) {
+    if (databus.foods.length > 10) {
+      databus.gameOver = true
+      this.music.stopBgm()
       this.gameinfo.renderGameOver(ctx, databus.score)
 
       this.touchHandler = this.touchEventHandler.bind(this)
@@ -141,6 +142,7 @@ export default class Main {
     }
     if (databus.eatApple) {
       ++databus.score
+      this.music.playBoom()
       databus.eatApple = false
       this.gameinfo.renderGameScore(ctx, databus.score)
     }
