@@ -29,13 +29,17 @@ export default class Main {
     this.snake   = new Snake(ctx)
     this.gameinfo = new GameInfo()
     this.music    = new Music()
-
+    this.music.playBgm()
     window.requestAnimationFrame(
       this.loop.bind(this),
       canvas
     )
   }
-
+  gameParse() {
+    databus.gameParse = true
+    this.gameinfo.renderGameParsePopUp(ctx)
+    this.music.stopBgm()
+  }
   /**
    * 随着帧数变化的食物生成逻辑
    * 帧数取模定义成生成的频率
@@ -73,13 +77,47 @@ export default class Main {
     let y = e.touches[0].clientY
 
     let area = this.gameinfo.btnArea
-
-    if (   x >= area.startX
-        && x <= area.endX
-        && y >= area.startY
-        && y <= area.endY  )
-      this.restart()
+    // 重新开始事件监听
+    if (area) {
+      if (   x >= area.startX
+          && x <= area.endX
+          && y >= area.startY
+          && y <= area.endY  ) {
+        this.restart()
+      }
     }
+
+
+    let areaParse = this.gameinfo.parseArea
+    if (areaParse) {
+      if (   x >= areaParse.startX
+          && x <= areaParse.endX
+          && y >= areaParse.startY
+          && y <= areaParse.endY  ) {
+              console.log('点到暂停了')
+              this.gameParse()
+          }
+    }
+
+    let restartArea = this.gameinfo.restartArea
+    if (restartArea) {
+      if (   x >= restartArea.startX
+          && x <= restartArea.endX
+          && y >= restartArea.startY
+          && y <= restartArea.endY  ) {
+              console.log('恢复')
+              databus.gameParse = false
+              // 记录分数，蛇位置、食物等重绘
+              this.render()
+              this.update()
+              window.requestAnimationFrame(
+                this.loop.bind(this),
+                canvas
+              )
+          }
+    }
+  }
+
 
     /**
      * canvas重绘函数
@@ -103,6 +141,7 @@ export default class Main {
     })
 
     this.gameinfo.renderGameScore(ctx, databus.score)
+    this.gameinfo.renderGamePauseBtn(ctx)
   }
 
   // 游戏逻辑更新主函数
@@ -116,11 +155,13 @@ export default class Main {
 
   // 实现游戏帧循环
   loop() {
+    if (databus.gameParse) return
     databus.frame++
 
     this.update()
     this.render()
-
+    this.touchHandler = this.touchEventHandler.bind(this)
+    canvas.addEventListener('touchstart', this.touchHandler)
     // 游戏结束停止帧循环
     if ( databus.gameOver ) {
       this.gameinfo.renderGameOver(ctx, databus.score)
@@ -136,7 +177,6 @@ export default class Main {
       this.gameinfo.renderGameOver(ctx, databus.score)
 
       this.touchHandler = this.touchEventHandler.bind(this)
-      canvas.addEventListener('touchstart', this.touchHandler)
 
       return
     }

@@ -60,5 +60,42 @@ export default class GameInfo {
       endY  : screenHeight / 2 - 100 + 255
     }
   }
+  renderGamePauseBtn (ctx) {
+    ctx.fillStyle = "#fffff"
+    ctx.font      = "20px Arial"
+    ctx.fillText(
+      '≥暂停',
+      170,
+      30
+    )
+    this.parseArea = {
+      startX: 150,
+      startY: 20,
+      endX  : 200,
+      endY  : 40
+    }
+  }
+  // 渲染暂停弹窗提示
+  renderGameParsePopUp(ctx) {
+    ctx.drawImage(atlas, 0, 0, 119, 108, screenWidth / 2 - 150, screenHeight / 2 - 100, 300, 300)
+    ctx.fillStyle = "#ffffff"
+    ctx.font    = "20px Arial"
+    ctx.fillText(
+      '暂停结束',
+      170,
+      380
+    )
+    ctx.fillText(
+      '游戏暂停',
+      screenWidth / 2 - 40,
+      screenHeight / 2 - 100 + 205
+    )
+    this.restartArea = {
+      startX: 100,
+      startY: 360,
+      endX  : 300,
+      endY  : 400
+    }
+  }
 }
 

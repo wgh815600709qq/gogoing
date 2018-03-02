@@ -1,7 +1,10 @@
 import Animation from '../base/animate.js'
 import DataBus   from '../databus'
 
-const ENEMY_IMG_SRC = 'images/food.png'
+const ENEMY_IMG_SRC_1 = 'images/food_1.png'
+const ENEMY_IMG_SRC_2 = 'images/food_2.png'
+const ENEMY_IMG_SRC_3 = 'images/food_3.png'
+const ENEMY_IMG_SRC_4 = 'images/food_4.png'
 const ENEMY_WIDTH   = 60
 const ENEMY_HEIGHT  = 60
 
@@ -17,7 +20,18 @@ function rnd(start, end){
 
 export default class Food extends Animation {
   constructor() {
-    super(ENEMY_IMG_SRC, ENEMY_WIDTH, ENEMY_HEIGHT)
+    var num = rnd(1,5)
+    var url
+    if (num === 1) {
+      url = ENEMY_IMG_SRC_1
+    } else if (num === 2)  {
+      url = ENEMY_IMG_SRC_2
+    } else if (num === 3) {
+      url = ENEMY_IMG_SRC_3
+    } else if(num === 4) {
+      url = ENEMY_IMG_SRC_4
+    }
+    super(url, ENEMY_WIDTH, ENEMY_HEIGHT)
 
     // this.initExplosionAnimation()
     this.initEatenAnimation()

@@ -24,6 +24,7 @@ export default class DataBus {
     this.animations = []
     this.eatApple = false
     this.gameOver   = false
+    this.gameParse = false // 是否暂停
   }
   isSameObject(a, b) {
     return JSON.stringify(a) === JSON.stringify(b)
