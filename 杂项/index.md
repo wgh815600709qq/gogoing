@@ -121,3 +121,16 @@ var counter =(function(){
     }
 })()
 ```
+
+
+# git 一些操作
+
+```
+
+	git branch -r // 获取远程分支
+
+	git branch 	  // 查看本地分支
+
+	git checkout -b [本地名] [origin/远程名] // 切换分支
+
+```

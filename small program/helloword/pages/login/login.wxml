@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="login-page">
+  <text class="title">追梦人</text>
+  <view class="login-form">
+    <input type="text" name="account" bindinput="accountInput" placeholder="请输入账号/手机号" auto-focus></input>
+    <input password name="password" placeholder="请输入密码" bindinput="passwordInput"></input>
+    <button>登陆</button>
+  </view>
+</view>

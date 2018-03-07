@@ -1,0 +1,6 @@
+/**login.wxss**/
+.login-page{
+  height: 730rpx;
+  background-color: blue;
+  background-image: '../../assets/blacklist.png'
+}
