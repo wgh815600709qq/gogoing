@@ -134,3 +134,11 @@ var counter =(function(){
 	git checkout -b [本地名] [origin/远程名] // 切换分支
 
 ```
+
+
+# ssh 上传远程(git bash)
+
+```
+    ssh [账户名]@[地址]
+
+```
