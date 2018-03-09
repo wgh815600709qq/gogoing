@@ -1,6 +1,39 @@
 /**login.wxss**/
+
+page{
+  height: 100%;
+}
 .login-page{
-  height: 730rpx;
   background-color: blue;
-  background-image: '../../assets/blacklist.png'
+  height: 100%;
+  background: #fff;
+}
+.title{
+  text-align: center;
+  height: 40rpx;
+}
+
+.login-form{
+  height:88%;
+  margin: 20rpx 0;
+}
+
+.copy-right{
+  height: 40rpx;
+  text-align: center;
+  color:#fff;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+input{
+  height: 40rpx;
+  border: 1px solid blue;
+  margin:40rpx;
+  font-size: 28rpx;
+  text-indent: 40rpx;
+  border-radius: 4px;
+}
+
+-webkit:placeholder{
+  color:#444;
 }
