@@ -7,13 +7,17 @@
       <img src="../../assets/bg.jpg">
     </div>
     <div>
-      <input type="text" v-model="username">
-      <input type="password" v-model="password">
+      <fb-input type="text"  placeholder="请输入账号" v-model="username"></fb-input>
+      <fb-input type="password" placeholder="请输入密码" v-model="password"></fb-input>
+      <fb-button type="error" @click="register">注册</fb-button>
+      <fb-button type="success" @click="login">登陆</fb-button>
     </div>
   </div>
 </template>
 
 <script>
+import fbInput from '@/components/ui/input'
+import fbButton from '@/components/ui/button'
 export default {
   name: 'login',
   data () {
@@ -21,6 +25,16 @@ export default {
       username: '',
       password: ''
     }
+  },
+  methods: {
+    register () {
+    },
+    login () {
+    }
+  },
+  components: {
+    fbInput,
+    fbButton
   }
 }
 </script>
@@ -36,8 +50,9 @@ export default {
     }
   }
   .bg-img{
+    width: 100%;
     img{
-      width: 10rem;
+      width: 100%;
     }
   }
 }
