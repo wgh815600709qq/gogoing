@@ -32,7 +32,9 @@ export default {
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   cursor: pointer;
-  margin: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
 }
 </style>

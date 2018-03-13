@@ -1,6 +1,7 @@
 <template>
   <div class="fb-input">
-    <input :type="type" :placeholder="placeholder" v-model="inputValue" @input="inputChange">
+    <input ref="input" :type="type" :placeholder="placeholder" v-model="inputValue" @input="inputChange" @focus="focus" @blur="blur">
+    <i class="iconfont icon-qingchu" v-if="showClear" @click="clearInput($event)"></i>
   </div>
 </template>
 
@@ -9,7 +10,8 @@ export default {
   name: 'fb-input',
   data () {
     return {
-      inputValue: this.value
+      inputValue: this.value,
+      showClear: false
     }
   },
   watch: {
@@ -18,8 +20,18 @@ export default {
     }
   },
   methods: {
+    focus () {
+      this.showClear = true
+    },
+    blur () {
+      this.showClear = false
+    },
     inputChange () {
       this.$emit('inputChange', this.inputValue)
+    },
+    clearInput (e) {
+      this.inputValue = ''
+      this.$refs.input.focus()
     }
   },
   props: {
@@ -41,9 +53,9 @@ export default {
 <style lang="less" scoped>
 .fb-input{
   display: inline-block;
+  position: relative;
   margin: 0.2rem;
   border:1px solid #dadada;
-  border-radius: 2px;
   height: 0.6rem;
   input{
     width: 100%;
@@ -53,10 +65,19 @@ export default {
     text-indent: 0.2rem;
     outline: none;
     border: none;
+    border-radius: 4px;
   }
   input::-webkit-input-placeholder{
     color: #dadada;
     font-size: 12px;
+  }
+  .icon-qingchu{
+    font-size: 0.6rem;
+    color:#851b25;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 </style>
