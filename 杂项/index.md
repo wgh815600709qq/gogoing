@@ -142,3 +142,48 @@ var counter =(function(){
     ssh [账户名]@[地址]
 
 ```
+
+
+
+# AMD　＆＆ CMD
+```
+
+    AMD: Asynchronous Module Definition // 异步模块定义
+
+    一个在浏览器端模块化开发的规范, 是 RequireJS 在推广过程中对模块定义的规范化的产出
+
+    RequireJS主要解决两个问题:
+
+    1、多个js文件可能有依赖关系，被依赖的文件需要早于依赖它的文件加载到浏览器
+
+    2、js加载的时候浏览器会停止页面渲染，加载文件越多，页面失去响应时间越长
+
+    requireJS定义了一个函数 define，它是全局变量，用来定义模块
+    ------------------------------------------------------------------
+
+    CMD: Common Module Definition // 通用模块定义
+    SeaJS
+
+    CMD推崇
+
+    一个文件一个模块，所以经常就用文件名作为模块id
+
+    CMD推崇依赖就近，所以一般不在define的参数中写依赖，在factory中写
+    factory是一个函数，有三个参数，function(require, exports, module)
+    require 是一个方法，接受 模块标识 作为唯一参数，用来获取其他模块提供的接口：require(id)
+    exports 是一个对象，用来向外提供模块接口
+    module 是一个对象，上面存储了与当前模块相关联的一些属性和方法
+
+
+    NodeJS是CommonJS规范的实现，webpack 也是以CommonJS的形式来书写
+
+    Browserify 是目前最常用的 CommonJS 格式转换的工具
+
+    CommonJS是主要为了JS在后端的表现制定的，他是不适合前端的，AMD(异步模块定义)出现了，它就主要为前端JS的表现制定规范。
+    [文章](http://blog.csdn.net/Vin1992/article/details/60870040)
+```
+
+
+```
+    underscore.js、 backbone.js、 require.js、 sea.js
+```
