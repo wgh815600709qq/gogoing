@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false// 是否允许为NULL
     },
-    name: {
+    _name: {
       type: DataTypes.STRING,
       allowNull: false// 是否允许为NULL
     }

@@ -1,18 +1,5 @@
 import express from 'express'
-// import newsRouter from './router/news'
-// import faqRouter from './router/faq'
-// import pictureRouter from './router/picture'
 import adminRouter from './router/admin'
-// import newsClassifyRouter from './router/news_classify.js'
-// import faqClassifyRouter from './router/faq_classify.js'
-// import departmentClassifyRouter from './router/department_classify.js'
-// import aspCaseRouter from './router/asp_case.js'
-// import fileRouter from './router/upload_files.js'
-// import captchaRouter from './router/captcha.js'
-// import apiRouter from './router/api.js'
-// import msgRouter from './router/leave_msg.js'
-// import companyHistoryRouter from './router/company_history.js'
-// import friendlyLinkRouter from './router/friendly_link.js'
 const path = require('path')
 const session = require('express-session')
 const app = express()
@@ -53,4 +40,5 @@ app.use(errorHandler)
 
 // Listen the server
 app.listen(port, host)
+console.warn('Server Start on', new Date().toLocaleString())
 console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console

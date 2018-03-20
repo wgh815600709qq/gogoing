@@ -21,13 +21,17 @@ router.post('/add', async (req, res, next) => {
   let data = {
     _username: req.body.username,
     _password: req.body.password,
-    name: req.body.name
+    _name: req.body.name
   }
-  let result = await add(data)
-  if (result) {
-    res.send(Object.assign(success, {data: result}))
-  } else {
-    res.send(Object.assign(fail, {data: null}))
+  try {
+    let result = await add(data)
+    if (result) {
+      res.send(Object.assign(success, {data: result}))
+    } else {
+      res.send(Object.assign(fail, {data: null}))
+    }
+  } catch(err) {
+    console.log('err', err)
   }
 })
 
