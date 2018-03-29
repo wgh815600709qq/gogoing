@@ -187,3 +187,46 @@ var counter =(function(){
 ```
     underscore.js、 backbone.js、 require.js、 sea.js
 ```
+
+
+## 找出0至x数内的质数与合数(算法)
+```
+
+     function getPrimeNumber(end) {
+      var primeArr = [1, 2, 3] // 质数
+      var comArr = [] // 合数
+      for (var i = 4; i <= end; i++) {
+        primeArr.forEach((item,index) => {
+          if (index > 0) { // 从非1开始筛选
+            if (i % item == 0) {
+              if (comArr.findIndex((it)=> {return it === i}) == -1) {// 非重复则插入
+                comArr.push(i)
+              }
+            }
+          }
+        })
+        var isExist = comArr.findIndex((it)=> {
+          return it === i
+        }) > -1
+        if (!isExist) {
+          primeArr.push(i)
+        }
+      }
+      console.log('primeArr', primeArr)
+      console.log('comArr', comArr)
+     }
+     getPrimeNumber(100)
+
+```
+
+
+## gka 
+```
+
+    gka 是一款简单的、高效的帧动画生成工具。
+    通过对图片集进行处理，一键式生成序列帧动画文件，并内置相关优化。
+    一键式 : 图片文件批量序列化重命名，生成帧动画文件，支持预览
+    性能佳 : 支持合图模式✓，相同帧图片复用✓，图片空白裁剪✓，图片压缩✓
+    GitHub 地址：https://github.com/joeyguo/gka
+
+```
